@@ -165,7 +165,8 @@ const app = new Vue ({
             }
         ],
         activeContactIndex:0,
-        currentIndex:0,
+        searchText:'',
+        message:'',
         
     },
     methods:{
