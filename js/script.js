@@ -172,6 +172,15 @@ const app = new Vue ({
     methods:{
         vewChat(index){
             this.activeContactIndex = index;
+        },
+        sendMessage(){
+            const newMessage = {
+                date: '10/01/2020 15:50:00',
+                message: this.message,
+                status: 'sent' 
+            };
+         this.contacts[this.activeContactIndex].messages.push(newMessage);  
+         this.message = ''
         }
 
     }

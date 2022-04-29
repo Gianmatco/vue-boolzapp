@@ -49,7 +49,7 @@
                         
                         <div class="d-flex align-self-center container-contatti">
                             <ul class="list-group">
-                                <li v-for="(contatto, index) in contacts" :key="index" class="list-groupo-item d-flex justify-content-start align-items-center">
+                                <li v-for="(contatto, index) in contacts" :key="index" class="list-group-item d-flex justify-content-start align-items-center" :class="{'active': activeContactIndex === index}" @click="vewChat(index)">
                                      <img :src="'./img/avatar'+ contatto.avatar +'.jpg'" :alt="'avatar' + contatto.name" class="rounded-circle img-icon">
                                     <span>{{contatto.name}}</span>
                                 </li>
@@ -57,12 +57,7 @@
                                 
                                 
                         </div>
-                        
-                        
-    
-                        
-    
-                        
+         
                     </div>
                     <div class="col-8 h-100"> <!--parte destra -->
                         <div class="d-flex justify-content-between container-me">
@@ -78,10 +73,9 @@
                         </div>
     
                         <div class="container-message">
-                            <div class="messaggio-testo " v-for="(message, index) in contacts[activeContactIndex].messages" :key="index">
+                            <div class="messaggio-testo " v-for="(item, index) in contacts[activeContactIndex].messages" :key="index" :class="item.status === 'sent' ? 'sent' : ' received' ">
                                 <span>
-                                   
-
+                                    {{item.message}}
                                 </span>
                             </div>
 
@@ -90,7 +84,7 @@
 
                         <div class="footer">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="scrivi messaggi0" aria-label="scrivi messaggio" aria-describedby="basic-addon2" v-model="message">
+                                <input type="text" class="form-control" placeholder="scrivi messaggi0" aria-label="scrivi messaggio" aria-describedby="basic-addon2" v-model="message" @keyup.enter="sendMessage()">
                                 <span class="input-group-text" id="basic-addon2">@example.com</span>
                             </div>
                         </div>

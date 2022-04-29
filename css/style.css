@@ -31,7 +31,7 @@
     height: 80px;
 }
 .container-search{
-    height: 80px;
+    height: 40px;
     
 }
 
@@ -103,8 +103,8 @@ i{
     clear: both;
 
 }
-li .list-groupo-item.active{
-    background-color: bisque;
+li .list-group-item.active{
+    background-color: red;
 }
 
 
